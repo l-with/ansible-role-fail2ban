@@ -1,0 +1,6 @@
+---
+
+fail2ban_sshd:     yes
+fail2ban_recidive: yes
+
+...
