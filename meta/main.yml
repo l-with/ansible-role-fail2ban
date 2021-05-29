@@ -1,7 +1,7 @@
 ---
 
 galaxy_info:
-  role_name: fail2bain
+  role_name: fail2ban
   description: install fail2ban
   author: l_with
   license: MIT
