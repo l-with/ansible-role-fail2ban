@@ -5,9 +5,10 @@
     name: fail2ban
 
 - name: Ensure jail.local in /etc/fail2ban
-  template:
+  ansible.builtin.template:
     src:  jail.local.j2
     dest: /etc/fail2ban/jail.local
+    mode: u=rw,g=r
   notify: restart fail2ban
 
 - name: Ensure fail2ban is running (and enabled)
@@ -17,16 +18,18 @@
     enabled: yes
 
 - name: Ensure 10-sshd.local in /etc/fail2ban/jail.d
-  template:
+  ansible.builtin.template:
     src:  10-sshd.local.j2
     dest: /etc/fail2ban/jail.d/10-sshd.local
+    mode: u=rw,g=r
   when: fail2ban_sshd
   notify: restart fail2ban
 
 - name: Ensure copy of 10-recidive.local is in /etc/fail2ban/jail.d
-  template:
+  ansible.builtin.template:
     src:  10-recidive.local.j2
     dest: /etc/fail2ban/jail.d/10-recidive.local
+    mode: u=rw,g=r
   when: fail2ban_recidive
   notify: restart fail2ban
 
